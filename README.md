@@ -2,6 +2,16 @@
 
 # LoRa Basics™ Station
 
+## Balena instructions
+
+* Create your APP <appName>
+* balena push <appName>
+
+## ToDo Balena
+
+* need to change the ws URL to wss://lns.eu.thethings.network:443
+* Test that it works
+
 [Basic Station](https://doc.sm.tc/station) is a LoRaWAN Gateway implementation, including features like
 
 *  **Ready for LoRaWAN Classes A, B, and C**
