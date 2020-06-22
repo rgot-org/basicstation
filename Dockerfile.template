@@ -13,8 +13,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Compile our source code
-RUN git clone https://github.com/lorabasics/basicstation.git && cd basicstation
-RUN make platform=rpi variant=std
+RUN make platform=rpi variant=std arch=%%BALENA_ARCH%%
 
 # Launch our binary on container startup.
 CMD ["bash", "start.sh"]
