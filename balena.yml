@@ -23,8 +23,8 @@ assets:
 data:
   applicationEnvironmentVariables:
     - GW_GPS: false
-    - GW_RESET_PIN: 11
-    - GW_RESET_GPIO: 17
+    - GW_RESET_PIN: 26
+    - GW_RESET_GPIO: 7
     - MODEL: SX1301
     - TTN_STACK_VERSION: 3
     - TTN_REGION: eu1
