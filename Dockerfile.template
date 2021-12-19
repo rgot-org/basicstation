@@ -1,20 +1,21 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-build as builder
+# Install build tools and remove layer cache afterwards 
 
+
+# Switch to working directory for our app
 WORKDIR /usr/src/app
 
+# Copy all the source code in.
 COPY . .
-
+# script des dependances
 RUN sudo chmod +x deps/mbedtls/prep.sh
-
 RUN sudo chmod +x deps/lgw/prep.sh
-
 RUN sudo chmod +x deps/lgw1302/prep.sh
-
 RUN sudo chmod +x deps/smtcpico/prep.sh
-
+# Compile our source code
 RUN make platform=rpi variant=std arch=%%BALENA_ARCH%%
-
 RUN make platform=corecell variant=std arch=%%BALENA_ARCH%%
+
 
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
 
@@ -26,4 +27,5 @@ COPY --from=builder /usr/src/app/ ./
 
 COPY start* ./
 
-CMD [“bash”, “start.sh”]
+# Launch our binary on container startup.
+CMD ["bash", "start.sh"]
